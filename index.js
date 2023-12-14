@@ -3,7 +3,10 @@ import {create} from 'express-handlebars'
 import bodyParser from 'body-parser'
 import Routes from './routes.js'
 import mongoose from 'mongoose'
+import dotenv from "dotenv"
 
+
+dotenv.config()
 
 const app = express()
 // SHAARRTT
@@ -20,7 +23,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(Routes)
 
-const uri = 'mongodb+srv://mongodb155:byalCI5ZeV1QuLqU@tibbiymarkaz.ijjjipd.mongodb.net/?retryWrites=true&w=majority';
+const uri = process.env.MONGO_URL;
 mongoose.connect(uri);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -29,7 +32,7 @@ db.once('open', () => {
 });
 
 // Start the server
-const port = "https://qwerty-9okxf6d3a-bekzods-projects-1c079ed2.vercel.app"
+const port = process.env.ENV_URL
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
