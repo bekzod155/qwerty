@@ -5,7 +5,7 @@ import Customer from './customer.js'
 import { format, parse, parseISO} from 'date-fns'
 const router = Router()
 // Routes
-router.get('/hazorasptibbiymarkaz.uz', async(req, res) => {
+router.get('/qwerty-amber.vercel.app', async(req, res) => {
     const doctorData = await doctor.find()
     const servicesData = await services.find()
     const newdoctorData = doctorData.map(doc => ({ doctor: doc.doctor }))
