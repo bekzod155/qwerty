@@ -29,7 +29,7 @@ db.once('open', () => {
 });
 
 // Start the server
-const port = 3000;
+const port = "https://qwerty-9okxf6d3a-bekzods-projects-1c079ed2.vercel.app"
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
