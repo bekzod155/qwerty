@@ -32,7 +32,7 @@ router.post('/dashboard/add-customer',async(req,res) => {
        }
     
     const cust = await Customer.create(info)
-    const doctorData = await doctors.find()
+    const doctorData = await doctor.find()
     const servicesData = await services.find()
     const newdoctorData = doctorData.map(doc => ({ doctor: doc.doctor }))
     const newservicesData = servicesData.map(ser => ({ services: ser.services,price: ser.price }))
@@ -110,7 +110,7 @@ router.get('/setting/del/ser',async (req,res) => {
   res.redirect('/settings')
 })
 router.get('/setting/del/doc',async (req,res) => {
-  await doctors.findByIdAndDelete(req.query.id)
+  await doctor.findByIdAndDelete(req.query.id)
   res.redirect('/settings')
 })
 export default router
