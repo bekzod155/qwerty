@@ -1,5 +1,5 @@
 import express from 'express'
-import {create} from 'express-handlebars'
+import engine from 'express-handlebars'
 import bodyParser from 'body-parser'
 import Routes from './routes.js'
 import mongoose from 'mongoose'
@@ -10,10 +10,10 @@ dotenv.config()
 
 const app = express()
 // SHAARRTT
-const hbs = create({defaultLayout: 'main', extname: 'hbs'})
+// const hbs = create({defaultLayout: 'main', extname: 'hbs'})
 // Set Handlebars as the view engine
-app.engine('hbs', hbs.engine)
-app.set('view engine', 'hbs')
+app.engine('handlebars', engine())
+app.set('view engine', 'handlebars')
 app.set('views', './views')
 
 app.use(express.static('public'))

@@ -6,7 +6,7 @@ import { format, parse, parseISO} from 'date-fns'
 const router = Router()
 // Routes
 router.get('/', async(req, res) => {
-    const doctorData = await doctor.find()
+    const doctorData = await doctors.find()
     const servicesData = await services.find()
     const newdoctorData = doctorData.map(doc => ({ doctor: doc.doctor }))
     const newservicesData = servicesData.map(ser => ({ services: ser.services,price: ser.price }))
@@ -32,7 +32,7 @@ router.post('/dashboard/add-customer',async(req,res) => {
        }
     
     const cust = await Customer.create(info)
-    const doctorData = await doctor.find()
+    const doctorData = await doctors.find()
     const servicesData = await services.find()
     const newdoctorData = doctorData.map(doc => ({ doctor: doc.doctor }))
     const newservicesData = servicesData.map(ser => ({ services: ser.services,price: ser.price }))
@@ -86,7 +86,7 @@ router.post('/reports/table', async (req, res) => {
 });
 // settings
 router.get('/settings', async (req, res) => {
-    const doctorData = await doctor.find()
+    const doctorData = await doctors.find()
     const servicesData = await services.find()
     const newdoctorData = doctorData.map(doc => ({ doctor: doc.doctor , room: doc.room,id: doc._id}))
     const newservicesData = servicesData.map(ser => ({ services: ser.services,price: ser.price,id: ser._id}))
@@ -110,7 +110,7 @@ router.get('/setting/del/ser',async (req,res) => {
   res.redirect('/settings')
 })
 router.get('/setting/del/doc',async (req,res) => {
-  await doctor.findByIdAndDelete(req.query.id)
+  await doctors.findByIdAndDelete(req.query.id)
   res.redirect('/settings')
 })
 export default router
